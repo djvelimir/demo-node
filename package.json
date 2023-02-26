@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "serve": "nodemon app.js",
+    "start": "node app.js"
   },
   "author": "",
   "license": "ISC",
@@ -15,5 +16,8 @@
     "lodash": "^4.17.21",
     "mongoose": "^6.9.2",
     "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
   }
 }
