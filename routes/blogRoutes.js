@@ -1,51 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const Blog = require('../models/blog');
+const blogController = require('../controllers/blogController');
 
-router.get('/', (req, res) => {
-    Blog.find()
-        .then((result) => {
-            res.send(result);
-        })
-        .catch((err) => {
-            console.log(err);
-        });
-});
-
-router.get('/:id', (req, res) => {
-    const id = req.params.id;
-
-    Blog.findById(id)
-        .then((result) => {
-            res.send(result);
-        })
-        .catch((err) => {
-            console.log(err);
-        });
-});
-
-router.post('/', (req, res) => {
-    const blog = new Blog(req.body);
-
-    blog.save()
-        .then((result) => {
-            res.send(result);
-        })
-        .catch((err) => {
-            console.log(err);
-        });
-});
-
-router.delete('/:id', (req, res) => {
-    const id = req.params.id;
-
-    Blog.findByIdAndDelete(id)
-        .then((result) => {
-            res.send(result);
-        })
-        .catch((err) => {
-            console.log(err);
-        });
-});
+router.get('/', blogController.blog_get);
+router.get('/:id', blogController.blog_get_by_id);
+router.post('/', blogController.blog_post);
+router.delete('/:id', blogController.blog_delete);
 
 module.exports = router;

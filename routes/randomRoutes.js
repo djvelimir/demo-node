@@ -1,11 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const _ = require('lodash');
+const randomController = require('../controllers/randomController');
 
-router.get('/', (req, res) => {
-    const randomNumber = _.random(0, 20);
-
-    res.send(randomNumber.toString());
-});
+router.get('/', randomController.random_get);
 
 module.exports = router;
